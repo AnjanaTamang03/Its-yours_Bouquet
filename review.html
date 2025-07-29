@@ -1,164 +1,254 @@
-<!-- Just updating the modified parts below -->
-<style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Submit Your Review</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
     :root {
-        --primary-color: #FFB6C1;
-        --secondary-color: #FFF0F5;
-        --text-color: #333;
-        --accent-color: #DB7093;
-        --shadow-color: rgba(0, 0, 0, 0.15);
+      --primary-color: #FFB6C1;
+      --secondary-color: #FFF0F5;
+      --text-color: #333;
+      --accent-color: #DB7093;
+      --shadow-color: rgba(0, 0, 0, 0.15);
     }
 
     * {
-        box-sizing: border-box;
+      box-sizing: border-box;
     }
 
     body {
-        font-family: 'Poppins', sans-serif;
-        background-color: var(--secondary-color);
-        margin: 0;
-        min-height: 100dvh; /* Updated for mobile keyboard fix */
-        color: var(--text-color);
-        padding: 20px;
-        display: block;
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--secondary-color);
+      margin: 0;
+      padding: 20px;
+      min-height: 100dvh;
+      color: var(--text-color);
     }
 
     .review-container {
-        background-color: white;
-        border-radius: 20px;
-        box-shadow: 0 7px 25px var(--shadow-color);
-        padding: 3rem;
-        max-width: 650px;
-        margin: 0 auto;
-        box-sizing: border-box;
+      background-color: #fff;
+      border-radius: 20px;
+      box-shadow: 0 7px 25px var(--shadow-color);
+      padding: 3rem;
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: var(--accent-color);
+    }
+
+    .highlight-fill {
+      background-color: #ffe4ec;
+      padding: 1rem;
+      border: 2px dashed var(--accent-color);
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.1rem;
+      position: relative;
+    }
+
+    .highlight-fill::before {
+      content: "⬇";
+      position: absolute;
+      top: -25px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1.5rem;
+      color: var(--accent-color);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
     }
 
     input[type="text"],
     input[type="email"],
     textarea {
-        width: 100%;
-        padding: 1rem;
-        border: 2px solid #ddd;
-        border-radius: 12px;
-        font-family: 'Poppins', sans-serif;
-        font-size: 1.1rem;
-        color: var(--text-color);
-        resize: vertical;
-        transition: border-color 0.3s ease;
+      width: 100%;
+      padding: 1rem;
+      border: 2px solid #ddd;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      color: var(--text-color);
+      resize: vertical;
+      margin-bottom: 1.5rem;
     }
 
     input::placeholder,
     textarea::placeholder {
-        color: #888;
-        font-size: 1rem;
+      color: #888;
+      font-size: 1rem;
     }
 
-    /* Responsive adjustments */
+    button[type="submit"] {
+      background-color: var(--accent-color);
+      color: #fff;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #c35f7c;
+    }
+
+    #emailLinkContainer {
+      display: none;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    #emailLink {
+      text-decoration: none;
+      background-color: var(--primary-color);
+      color: #333;
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    #emailLink:hover {
+      background-color: #ff9db2;
+    }
+
+    .loader {
+      display: none;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    #returnToFormButton {
+      display: none;
+      margin: 2rem auto 0;
+      text-align: center;
+      background-color: var(--accent-color);
+      color: white;
+      padding: 0.7rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
     @media (max-width: 768px) {
-        .review-container {
-            padding: 2rem;
-        }
+      .review-container {
+        padding: 2rem;
+      }
 
-        h1 {
-            font-size: 2rem;
-        }
+      h1 {
+        font-size: 2rem;
+      }
 
-        p {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        label {
-            font-size: 1rem;
-        }
-
-        input[type="text"],
-        input[type="email"],
-        textarea {
-            padding: 0.9rem;
-            font-size: 1rem;
-        }
-
-        input::placeholder,
-        textarea::placeholder {
-            font-size: 0.95rem;
-        }
-
-        button[type="submit"],
-        #emailLink {
-            padding: 1rem 2rem;
-            font-size: 1.1rem;
-        }
+      .highlight-fill {
+        font-size: 1rem;
+      }
     }
 
     @media (max-width: 500px) {
-        .review-container {
-            border-radius: 15px;
-        }
+      .highlight-fill::before {
+        font-size: 1.2rem;
+      }
 
-        h1 {
-            font-size: 1.8rem;
-        }
-
-        p {
-            font-size: 1rem;
-        }
+      button[type="submit"],
+      #emailLink {
+        font-size: 1rem;
+      }
     }
-</style>
+  </style>
+</head>
+<body>
 
+  <div class="review-container">
+    <h1>Submit Your Review</h1>
+    <div class="highlight-fill">⬇ Fill out the form below ⬇</div>
 
-    <script>
-        document.getElementById('reviewForm').addEventListener('submit', function(event) {
-            event.preventDefault();
+    <form id="reviewForm">
+      <div class="form-group">
+        <label for="name">Name *</label>
+        <input type="text" id="name" placeholder="Enter your name" required />
+      </div>
 
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const reviewText = document.getElementById('review').value;
+      <div class="form-group">
+        <label for="email">Email *</label>
+        <input type="email" id="email" placeholder="Enter your email" required />
+      </div>
 
-            // Construct the mailto link
-            const subject = encodeURIComponent("Review of Your Service");
-            const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nReview:\n${reviewText}`);
+      <div class="form-group">
+        <label for="review">Your Review *</label>
+        <textarea id="review" rows="5" placeholder="Write your experience..." required></textarea>
+      </div>
 
-            const mailtoLink = `mailto:anjanatheeng610@gmail.com?subject=${subject}&body=${body}`;
+      <button type="submit">Submit Review</button>
+    </form>
 
-            // Update the href of the email link
-            document.getElementById('emailLink').href = mailtoLink;
+    <div id="thankYouMessage" style="display: none; text-align: center;">
+      <h2 style="color: var(--accent-color);">Thank you for your feedback!</h2>
+    </div>
 
-            // Show the thank you message and the email link
-            document.getElementById('reviewForm').style.display = 'none';
-            document.getElementById('thankYouMessage').style.display = 'block';
-            document.getElementById('emailLinkContainer').style.display = 'flex'; //show email link container
-            document.getElementById('returnToFormButton').style.display = 'none';//hide return to form button
-        });
-        function thanks_animation(){
-            document.getElementById('returnToFormButton').style.display = 'inline-block';
-            document.getElementById('emailLinkContainer').style.display = 'none';
-        }
-          document.getElementById('emailLink').addEventListener('click', function() {
-           let loader = document.querySelector('.loader')
-            loader.style.display = "block";
-           setTimeout(() => {
-            loader.style.display = "none";
-              thanks_animation()
-           }, 3000);
-        })
+    <div id="emailLinkContainer">
+      <a href="#" id="emailLink">Click to Send Review</a>
+    </div>
 
-        document.getElementById('returnToFormButton').addEventListener('click', function() {
-            // Hide the thank you message
-            document.getElementById('thankYouMessage').style.display = 'none';
-            // Show the review form again
-            document.getElementById('reviewForm').style.display = 'block';
+    <div class="loader">
+      <p>Preparing your email link...</p>
+    </div>
 
-            // Clear the form fields
-            document.getElementById('name').value = '';
-            document.getElementById('email').value = '';
-            document.getElementById('review').value = '';
-        });
-    </script>
+    <button id="returnToFormButton">Submit Another Review</button>
+  </div>
+
+  <script>
+    document.getElementById('reviewForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const reviewText = document.getElementById('review').value;
+
+      const subject = encodeURIComponent("Review of Your Service");
+      const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nReview:\n${reviewText}`);
+      const mailtoLink = `mailto:anjanatheeng610@gmail.com?subject=${subject}&body=${body}`;
+
+      document.getElementById('emailLink').href = mailtoLink;
+
+      document.getElementById('reviewForm').style.display = 'none';
+      document.getElementById('thankYouMessage').style.display = 'block';
+      document.getElementById('emailLinkContainer').style.display = 'flex';
+      document.getElementById('returnToFormButton').style.display = 'none';
+    });
+
+    function thanks_animation() {
+      document.getElementById('returnToFormButton').style.display = 'inline-block';
+      document.getElementById('emailLinkContainer').style.display = 'none';
+    }
+
+    document.getElementById('emailLink').addEventListener('click', function () {
+      let loader = document.querySelector('.loader');
+      loader.style.display = "block";
+      setTimeout(() => {
+        loader.style.display = "none";
+        thanks_animation();
+      }, 3000);
+    });
+
+    document.getElementById('returnToFormButton').addEventListener('click', function () {
+      document.getElementById('thankYouMessage').style.display = 'none';
+      document.getElementById('reviewForm').style.display = 'block';
+      document.getElementById('name').value = '';
+      document.getElementById('email').value = '';
+      document.getElementById('review').value = '';
+    });
+  </script>
 
 </body>
 </html>
-
