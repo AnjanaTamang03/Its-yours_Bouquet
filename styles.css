@@ -204,6 +204,8 @@ nav{
   border-radius: 12px;
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.04);
   margin-top: 10px;
+  border-bottom: solid 3px rgba(219, 112, 147, 0.2); /* Light Accent (adjust alpha) */
+
 }
 
 .about-content h2 {
@@ -318,35 +320,33 @@ nav{
 }
 
 
-/* Responsive Design */
+
+/* Mobile Optimization */
 @media (max-width: 768px) {
-  .about-item {
-    flex-direction: column-reverse;
-    gap: 1rem;
+  .hero {
+    padding: 4rem 1rem 2rem;
   }
 
-  .about-item.reverse {
-    flex-direction: column;
+  .hero h1 {
+    font-size: 2rem;
   }
 
-  .description p {
-    font-size: 0.95rem; /* Smaller font size for mobile */
-    line-height: 1.5;
+  .hero h1 .second {
+    font-size: 1.2rem;
   }
 
-  .photo {
-    max-width: 100%; /* Full width for mobile */
+  .hero p {
+    font-size: 1rem;
+    padding: 0;
   }
 
-  .photo::after {
-    width: 15px;
-    height: 15px;
+  .hero .btn {
+    width: 80%;
+    max-width: 300px;
+    font-size: 1rem;
   }
 
-  .photo:hover::after {
-    width: 20px;
-    height: 20px;
-  }
+  /* Galleries */
 }
 .works {
   text-align: center;
@@ -443,6 +443,7 @@ line-height: 1.6;
 overflow-x: hidden;
 text-align: center;
 padding: 0;
+
 }
 
 .testimonials h2 {
@@ -521,42 +522,7 @@ opacity: 0.6;
 font-weight: 300;
 }
 
-/* Review CTA - Contact Section Style */
-.review-cta {
-padding: 3rem;
-background: rgba(255, 255, 255, 0.95); /* White background, like contact content */
-border-radius: 25px;                 /* Rounded corners */
-text-align: center;
-margin: 30px auto;
-max-width: 900px;                    /* Match contact content width */
-box-shadow: 0 10px 30px rgba(219, 112, 147, 0.1); /* Contact content shadow */
-border: 1px solid rgba(219, 112, 147, 0.1); /* Subtle border like contact cards */
-}
 
-.review-cta h3 {
-font-size: clamp(1.3rem, 2.2vw, 2.0rem); /* Match contact h2 size */
-color: var(--accent);                  /* Accent color */
-margin-bottom: 0.8rem;
-position: relative;                    /* For the underline */
-}
-
-.review-cta h3::after {
-content: '';
-position: absolute;
-bottom: -8px;
-left: 50%;
-transform: translateX(-50%);
-width: 60%;
-height: 2px;
-background: rgba(219, 112, 147, 0.2); /* Match underline color */
-}
-
-.review-cta p {
-color: var(--text);                   /* Text color */
-font-size: clamp(1rem, 1.2vw, 1.1rem); /* Match contact subtitle size */
-line-height: 1.6;
-margin-bottom: 2rem;
-}
 
 .review-btn {
 background: var(--accent);
@@ -577,17 +543,7 @@ background: palevioletred;
   box-shadow: 0 5px 25px rgba(119, 72, 101, 0.952);
 }
 
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-.review-cta {
-    padding: 2rem;
-    margin: 20px auto;
-}
 
-.review-btn {
-    padding: 12px 30px;
-}
-}
 
 /* Review media query */
 @media (max-width: 768px) {
@@ -634,11 +590,121 @@ background: palevioletred;
 }
 }
 
+/* CTA Section Container */
+.dual-cta-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 60px;
+  padding: 3rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
+/* CTA Box */
+.dual-cta-box {
+  flex: 1 1 480px;
+  max-width: 600px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 25px;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 10px 30px rgba(219, 112, 147, 0.1);
+  border: 1px solid rgba(219, 112, 147, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-/* Review  */
+.dual-cta-box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 35px rgba(219, 112, 147, 0.15);
+}
 
+/* Heading */
+.dual-cta-box h3 {
+  font-size: clamp(1.5rem, 2vw, 2rem);
+  color: var(--accent);
+  margin-bottom: 1rem;
+  position: relative;
+}
 
+.dual-cta-box h3::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 2px;
+  background: rgba(219, 112, 147, 0.2);
+}
+
+/* Paragraph */
+.dual-cta-box p {
+  color: var(--text);
+  font-size: clamp(1rem, 1.1vw, 1.1rem);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+/* CTA Button */
+.dual-cta-btn {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(219, 112, 147, 0.2);
+}
+
+.dual-cta-btn:hover {
+  background: palevioletred;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(119, 72, 101, 0.95);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .dual-cta-container {
+    gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .dual-cta-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .dual-cta-box {
+    max-width: 100%;
+    padding: 2rem 1.5rem;
+  }
+
+  .dual-cta-btn {
+    width: 100%;
+    max-width: 320px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dual-cta-box h3 {
+    font-size: 1.4rem;
+  }
+
+  .dual-cta-box p {
+    font-size: 0.95rem;
+  }
+
+  .dual-cta-btn {
+    font-size: 0.85rem;
+  }
+}
 
 /* COntact sections */
 .contact {
@@ -786,7 +852,7 @@ border-top: solid 3px rgba(219, 112, 147, 0.2); /* Light Accent (adjust alpha) *
       /* Social Media Section */
       .social-container {
         text-align: center;
-        padding-top: 1.5rem;
+        padding-top: 1rem;
         border-top: 1px solid rgba(219, 112, 147, 0.1);
         margin-top: 2rem;
       }
@@ -800,7 +866,7 @@ border-top: solid 3px rgba(219, 112, 147, 0.2); /* Light Accent (adjust alpha) *
       .social-links {
         display: flex;
         justify-content: center;
-        gap: 1.5rem;
+        gap: 1.9rem;
       }
       
       .social-icon {
@@ -818,7 +884,7 @@ border-top: solid 3px rgba(219, 112, 147, 0.2); /* Light Accent (adjust alpha) *
       
       .social-icon i {
         color: white;
-        font-size: 1.3rem;
+        font-size: 2.5rem;
       }
       
       .social-icon:hover {
@@ -1145,5 +1211,6 @@ font-size: 14px;
 color: #444;
 
 }
+
 
 
