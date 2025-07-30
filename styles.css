@@ -597,6 +597,9 @@ background: palevioletred;
   -webkit-overflow-scrolling: touch;
   grid-template-columns: none;
 }
+.testimonials p {
+
+margin: 0 auto 0px;}
 
 .review {
   flex: 0 0 80%;
@@ -725,6 +728,7 @@ background: palevioletred;
   .dual-cta-box {
     max-width: 100%;
     padding: 2rem 1.5rem;
+    max-height: fit-content;
   }
 
   .dual-cta-btn {
@@ -925,7 +929,7 @@ border-top: solid 3px rgba(219, 112, 147, 0.2); /* Light Accent (adjust alpha) *
       
       .social-icon i {
         color: white;
-        font-size: 2.5rem;
+        font-size: 2.3rem;
       }
       
       .social-icon:hover {
